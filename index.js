@@ -8,6 +8,7 @@ const crypto = require('crypto');
 const bodyParser = require('body-parser');
 const { uploadToMultipleProviders } = require('./lib/uploader');
 const githubService = require('./lib/github'); 
+const shortKu = require('./lib/short');
 
 const app = express();
 
@@ -404,6 +405,34 @@ app.get('/repo/info', async (req, res) => {
     const { username, repoName, token } = req.query; 
     const result = await githubService.getRepoInfo(username, repoName, token);
     res.status(result.success ? 200 : 400).json(result);
+});
+
+app.post('/api/short.php', async (req, res) => {
+  const { originalUrl, customName } = req.body;
+
+  if (!originalUrl) {
+    return res.status(400).json({ 
+      success: false, 
+      message: "URL asal wajib diisi." 
+    });
+  }
+
+  try {
+    const result = await shortKu(originalUrl, customName);
+
+    if (!result.success) {
+      return res.status(400).json(result);
+    }
+
+    res.status(201).json(result);
+
+  } catch (err) {
+    console.error('Error pada endpoint generate:', err);
+    res.status(500).json({ 
+      success: false, 
+      message: "Terjadi kesalahan pada internal server." 
+    });
+  }
 });
 
 module.exports = app;
