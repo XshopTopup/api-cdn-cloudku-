@@ -86,16 +86,8 @@ app.use(async (req, res, next) => {
 /*
 app.get('/', (req, res) => {
     res.render('index', { uploadedUrl: null, uploadedFile: null });
-});*/
-
-app.get('/', (req, res) => {
-    res.status(200).json({
-        success: true,
-        message: "api-cdn-cloudku-",
-        timestamp: new Date().toISOString()
-    });
 });
-/*
+
 app.get('/docs', (req, res) => {
     res.render('docs');
 });*/
