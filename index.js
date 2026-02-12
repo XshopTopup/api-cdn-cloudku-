@@ -95,10 +95,10 @@ app.get('/', (req, res) => {
         timestamp: new Date().toISOString()
     });
 });
-
+/*
 app.get('/docs', (req, res) => {
     res.render('docs');
-});
+});*/
 
 app.get('/f/:filename', async (req, res) => {
     const db = getDB();
