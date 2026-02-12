@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudku - Uploader</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Cloudku</a>
+        <a href="/docs">Dokumentasi API</a>
+    </nav>
+
+    <main>
+        <h1>Unggah File</h1>
+        <p>Batas maksimal 200MB per file.</p>
+
+        <section class="upload-container">
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" required>
+                <button type="submit">Upload Sekarang</button>
+            </form>
+        </section>
+
+        <% if (uploadedUrl) { %>
+            <section class="result">
+                <h2>Berhasil Diunggah!</h2>
+                <p>File: <%= uploadedFile %></p>
+                <div class="url-display">
+                    <input type="text" value="<%= uploadedUrl %>" id="resUrl" readonly>
+                    <button onclick="copyLink()">Salin Link</button>
+                </div>
+                <br>
+                <a href="<%= uploadedUrl %>" target="_blank">Lihat File Langsung</a>
+            </section>
+        <% } %>
+    </main>
+
+    <script>
+        function copyLink() {
+            const copyText = document.getElementById("resUrl");
+            copyText.select();
+            document.execCommand("copy");
+            alert("Link berhasil disalin!");
+        }
+    </script>
+</body>
+</html>
