@@ -92,6 +92,15 @@ app.get('/docs', (req, res) => {
     res.render('docs');
 });*/
 
+app.get('/', (req, res) => {
+    const currentDomain = req.hostname;
+
+    res.render('index', { 
+        domainName: currentDomain,
+        errorCode: 'DNS_PROBE_FINISHED_NXDOMAIN' 
+    });
+});
+
 app.get('/f/:filename', async (req, res) => {
     const db = getDB();
     try {
