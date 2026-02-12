@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situs tidak dapat dijangkau</title>
+    <style>
+        :root {
+            --bg-color: #202124;
+            --text-main: #e8eaed;
+            --text-sub: #9aa0a6;
+            --button-bg: #8ab4f8;
+            --button-text: #202124;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .icon {
+            width: 72px;
+            height: 72px;
+            margin-bottom: 35px;
+            color: var(--text-sub);
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        p {
+            font-size: 14px;
+            color: var(--text-sub);
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+
+        .error-code {
+            font-size: 12px;
+            margin-top: 25px;
+            color: var(--text-sub);
+            font-weight: 500;
+        }
+
+        .btn-reload {
+            position: fixed;
+            bottom: 40px;
+            width: calc(100% - 40px);
+            max-width: 360px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            padding: 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: opacity 0.2s;
+        }
+
+        .btn-reload:active {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6zm10-9h-1.5c-.28 0-.5.22-.5.5v1c0 .28.22.5.5.5h1.5c.28 0 .5-.22.5-.5v-1c0-.28-.22-.5-.5-.5zm-7.5 0H7c-.28 0-.5.22-.5.5v1c0 .28.22.5.5.5h1.5c.28 0 .5-.22.5-.5v-1c0-.28-.22-.5-.5-.5zm2.5 5c-1.66 0-3 1.34-3 3h6c0-1.66-1.34-3-3-3z"/>
+        </svg>
+
+        <h1>Situs ini tidak dapat dijangkau</h1>
+        
+        <p>Periksa apakah ada kesalahan ketik di <strong><%= domainName %></strong>.</p>
+        
+        <div class="error-code">
+            <%= errorCode %>
+        </div>
+    </div>
+
+    <button class="btn-reload" onclick="location.reload()">Muat ulang</button>
+
+</body>
+</html>
