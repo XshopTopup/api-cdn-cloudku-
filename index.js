@@ -11,7 +11,7 @@ const githubService = require('./lib/github');
 const shortKu = require('./lib/short');
 
 const app = express();
-app.set('trust proxy', true);
+//app.set('trust proxy', true);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -226,8 +226,8 @@ async function processUpload(file, req) {
 
     while (!success && attempts < maxAttempts) {
         fileName = `${generateRandomString(6)}${fileExt}`;
-       // publicUrl = `${req.protocol}://${req.get('host')}/f/${fileName}`;
-        publicUrl = `https://${req.get('host')}/f/${customFilename}`;
+       publicUrl = `${req.protocol}://${req.get('host')}/f/${fileName}`;
+       // publicUrl = `https://${req.get('host')}/f/${customFilename}`;
         
 
         try {
